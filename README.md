@@ -8,6 +8,20 @@
 ![Browsers](https://img.shields.io/badge/Browsers-Chromium%20%7C%20Firefox%20%7C%20WebKit-blue)
 ![Devices](https://img.shields.io/badge/Devices-S26%20Ultra%20%7C%20iPhone%2017%20PM%20%7C%20Pixel%2010%20Pro-purple)
 
+```text
+            .      .      *       .        .     *
+     *                        .        *         .
+                 .      _..._      .         .
+          .            .:::::.           *
+     *                .::'   '::.     .        *
+                    .::  .-.  ::.
+        .           ::  (o o)  ::     .     *
+                    ::   \_/   ::    Astronaut
+     *              '::.     .::'   exploring QA
+          .            ':::::'      in deep space
+                 *        '         .
+```
+
 Automation suite untuk `https://dev.mepo.travel/` dengan pendekatan modern: robust locators, POM, visual regression, dan external validation.  
 Built to catch regressions before users do 🛡️
 
