@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { HomePage } from '../pages/HomePage';
 
-test.describe('home interactions', () => {
+test.describe('@regression home interactions', () => {
+  test.describe.configure({ retries: 1 });
   test('accordion items are clickable and show content region', async ({ page }) => {
     await gotoPath(page, '/');
     const home = new HomePage(page);

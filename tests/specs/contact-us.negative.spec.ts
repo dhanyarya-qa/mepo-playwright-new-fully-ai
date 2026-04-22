@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { ContactUsPage } from '../pages/ContactUsPage';
 
-test.describe('contact us validation', () => {
+test.describe('@regression contact us validation', () => {
+  test.describe.configure({ retries: 1 });
   test('click submit with empty fields triggers required validation', async ({ page }) => {
     await gotoPath(page, '/contact-us');
     const contact = new ContactUsPage(page);

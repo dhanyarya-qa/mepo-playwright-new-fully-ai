@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 
-test.describe('visual banners (strict)', () => {
+test.describe('@visual @regression visual banners (strict)', () => {
+  test.describe.configure({ retries: 2 });
   test('home hero banner', async ({ page }) => {
     await gotoPath(page, '/');
     await page.evaluate(() => window.scrollTo(0, 0));

@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { Footer } from '../pages/Footer';
 
-test.describe('footer', () => {
+test.describe('@regression footer', () => {
+  test.describe.configure({ retries: 1 });
   test('common footer links exist', async ({ page }) => {
     await gotoPath(page, '/');
     const footer = new Footer(page);

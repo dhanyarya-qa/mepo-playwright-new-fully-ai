@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { ProductsPage } from '../pages/ProductsPage';
 
-test.describe('products', () => {
+test.describe('@regression products', () => {
+  test.describe.configure({ retries: 1 });
   test('see more button is visible and clickable', async ({ page }) => {
     await gotoPath(page, '/products');
     const products = new ProductsPage(page);

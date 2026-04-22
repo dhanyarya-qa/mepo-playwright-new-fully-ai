@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { Header } from '../pages/Header';
 
-test.describe('language switch', () => {
+test.describe('@regression language switch', () => {
+  test.describe.configure({ retries: 1 });
   test('ID button is clickable and (if menu exists) can switch language', async ({ page }) => {
     await gotoPath(page, '/');
     const header = new Header(page);

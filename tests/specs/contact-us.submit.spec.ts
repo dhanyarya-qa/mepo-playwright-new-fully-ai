@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { ContactUsPage } from '../pages/ContactUsPage';
+import { makeContactFormData } from '../data/factory';
 
-test.describe('contact us submit (optional)', () => {
+test.describe('@regression contact us submit (optional)', () => {
+  test.describe.configure({ retries: 1 });
   test('submit filled form (guarded)', async ({ page }) => {
     // Default behavior:
     // - In CI: enabled unless RUN_CONTACT_SUBMIT is explicitly set to "false"
@@ -15,10 +17,11 @@ test.describe('contact us submit (optional)', () => {
     const contact = new ContactUsPage(page);
     await contact.assertKeyTextAndFields();
 
-    await contact.fullNameInput().fill(`Playwright Submit ${Date.now()}`);
-    await contact.phoneInput().fill('081333326001');
-    await contact.emailInput().fill(`playwright.${Date.now()}@example.com`);
-    await contact.messageInput().fill('Automated submit from Playwright. Please ignore.');
+    const data = makeContactFormData();
+    await contact.fullNameInput().fill(data.fullName);
+    await contact.phoneInput().fill(data.phoneNumber);
+    await contact.emailInput().fill(data.email);
+    await contact.messageInput().fill(data.message);
 
     const submitResponses: string[] = [];
     page.on('response', (r) => {

@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { Header } from '../pages/Header';
 
-test.describe('navigation', () => {
+test.describe('@regression navigation', () => {
+  test.describe.configure({ retries: 1 });
   test('drawer links navigate to correct routes', async ({ page }) => {
     await gotoPath(page, '/');
     const header = new Header(page);

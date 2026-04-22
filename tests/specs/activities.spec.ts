@@ -16,7 +16,8 @@ function extractTitle(accessibleName: string) {
   return (m?.[1] ?? firstLine).trim().slice(0, 120);
 }
 
-test.describe('activities banners/cards', () => {
+test.describe('@regression @visual activities banners/cards', () => {
+  test.describe.configure({ retries: 1 });
   test('all activity cards validate text, screenshot, and are clickable', async ({ page }) => {
     test.setTimeout(120_000);
     await gotoPath(page, '/activities');

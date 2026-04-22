@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 
-test.describe('social links', () => {
+test.describe('@external @regression social links', () => {
+  test.describe.configure({ retries: 2 });
   test('footer social icons have href and can open in new tab', async ({ page }) => {
     await gotoPath(page, '/');
 

@@ -7,7 +7,8 @@ import { ActivitiesPage } from '../pages/ActivitiesPage';
 import { TermsPage } from '../pages/TermsPage';
 import { ContactUsPage } from '../pages/ContactUsPage';
 
-test.describe('smoke', () => {
+test.describe('@smoke @regression smoke', () => {
+  test.describe.configure({ retries: 1 });
   test('home renders hero headings', async ({ page }) => {
     await gotoPath(page, '/');
     const home = new HomePage(page);

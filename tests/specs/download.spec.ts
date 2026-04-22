@@ -2,7 +2,8 @@ import { test, expect } from '@playwright/test';
 import { gotoPath } from '../lib/navigation';
 import { Header } from '../pages/Header';
 
-test.describe('download menu', () => {
+test.describe('@external @regression download menu', () => {
+  test.describe.configure({ retries: 2 });
   test('download dropdown opens App Store and Play Store in new tabs', async ({ page }) => {
     await gotoPath(page, '/');
     const header = new Header(page);
