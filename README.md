@@ -18,8 +18,9 @@ Built to catch regressions before users do 🛡️
 ### Test Report Screenshot
 ![Playwright Report Preview](docs/assets/report-preview.png)
 
-### Animated Preview (GIF)
-![Playwright Animated Preview](docs/assets/report-preview.gif)
+### Animated Preview (MP4/WebM)
+- [Preview MP4](docs/assets/report-preview.mp4)
+- [Preview WebM](docs/assets/report-preview.webm)
 
 ---
 
