@@ -13,14 +13,44 @@ Built to catch regressions before users do 🛡️
 
 ---
 
-## Preview 👀
+## Quick Start ⚡ (30 seconds)
 
-### Test Report Screenshot
-![Playwright Report Preview](docs/assets/report-preview.png)
+```bash
+npm i
+npx playwright install
+npm run test:smoke
+```
 
-### Animated Preview (MP4/WebM)
-[![Animated Preview (click to play MP4)](docs/assets/report-preview.png)](docs/assets/report-preview.mp4)
-- Alternate format: [WebM](docs/assets/report-preview.webm)
+Common runs:
+- `npm test` (default: `chromium-desktop`)
+- `npm run test:regression`
+- `npm run test:external`
+- `npm run report` (open HTML report)
+
+## Test Matrix (ringkas)
+
+- **Browsers (desktop)**: Chromium, Firefox, WebKit
+- **Devices (simulated)**: Samsung S26 Ultra, iPhone 17 Pro Max, Pixel 10 Pro, Samsung Tab S10 FE, iPad Gen 11
+- **Tags**: `@smoke`, `@regression`, `@visual`, `@external`
+- **Matrix run**: `npm run test:matrix`
+
+## Known Limitations
+
+- **External/social pages** (Instagram/TikTok/LinkedIn) sering berubah karena **region, consent, atau login wall**. Test sudah pakai fallback assertions, tapi tetap bisa berubah sewaktu-waktu.
+- **Visual snapshots** bisa beda minor karena **font rendering, GPU, atau OS/browser differences**. Karena itu visual test defaultnya dipusatkan ke `chromium-desktop`.
+- **Optional real submit** untuk `Contact Us` tetap guarded dengan env (`RUN_CONTACT_SUBMIT`) untuk menghindari spam.
+
+## Troubleshooting
+
+- **Playwright browser belum ter-install**:
+  - Jalankan `npx playwright install --with-deps`
+- **Snapshot visual gagal**:
+  - Update baseline: `npm run test:update`
+  - Jalankan hanya visual: `npm run test:visual`
+- **Env base URL tidak terbaca**:
+  - Buat `.env` dari `.env.example` lalu set `BASE_URL=...`
+- **External test flaky**:
+  - Jalankan ulang `npm run test:external` (external pages bisa rate-limit/redirect/consent)
 
 ---
 
