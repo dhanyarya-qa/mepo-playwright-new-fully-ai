@@ -19,8 +19,8 @@ Built to catch regressions before users do 🛡️
 ![Playwright Report Preview](docs/assets/report-preview.png)
 
 ### Animated Preview (MP4/WebM)
-- [Preview MP4](docs/assets/report-preview.mp4)
-- [Preview WebM](docs/assets/report-preview.webm)
+[![Animated Preview (click to play MP4)](docs/assets/report-preview.png)](docs/assets/report-preview.mp4)
+- Alternate format: [WebM](docs/assets/report-preview.webm)
 
 ---
 
