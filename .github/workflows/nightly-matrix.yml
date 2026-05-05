@@ -1,0 +1,60 @@
+name: Nightly Matrix E2E
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - chromium-desktop
+          - firefox-desktop
+          - webkit-desktop
+          - samsung-s26-ultra
+          - iphone-17-pro-max
+          - pixel-10-pro
+          - samsung-tab-s10-fe
+          - ipad-gen-11
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test --project=${{ matrix.project }} --grep-invert @visual
+      - run: npm run report:summary
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-${{ matrix.project }}
+          path: |
+            playwright-report
+            test-results
+            reports
+
+  visual_chromium:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npx playwright test --project=chromium-desktop --grep @visual
+      - run: npm run report:summary
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-visual-chromium
+          path: |
+            playwright-report
+            test-results
+            reports
+

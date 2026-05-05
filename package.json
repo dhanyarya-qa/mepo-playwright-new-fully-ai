@@ -1,0 +1,37 @@
+{
+  "name": "mepo-playwright",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright TypeScript automation for https://dev.mepo.travel/",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "test": "playwright test --project=chromium-desktop",
+    "test:all": "playwright test --project=chromium-desktop; npm run report:summary",
+    "test:matrix": "playwright test",
+    "test:smoke": "playwright test --project=chromium-desktop --grep @smoke",
+    "test:regression": "playwright test --project=chromium-desktop --grep @regression",
+    "test:visual": "playwright test --project=chromium-desktop --grep @visual",
+    "test:external": "playwright test --project=chromium-desktop --grep @external",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:update": "playwright test --update-snapshots",
+    "report": "playwright show-report",
+    "report:summary": "node scripts/generate-test-summary.mjs",
+    "report:all": "npm run report:summary && npm run report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "latest",
+    "@playwright/test": "latest",
+    "@faker-js/faker": "latest",
+    "@types/node": "latest",
+    "dotenv": "latest",
+    "husky": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "xlsx": "latest"
+  }
+}
+
